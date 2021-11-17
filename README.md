@@ -1,7 +1,7 @@
 Genome-wide association study on the common liability to addiction
 ================
 
-</br></br></br></br></br>&lt;
+</br></br></br></br></br>
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@ Genome-wide association study on the common liability to addiction
 
 # [Getting started](#description)
 
-</br></br>
+</br>
 
 **Getting started with GenomicSEM**
 
@@ -48,34 +48,34 @@ Genome-wide association study on the common liability to addiction
 
 </br></br></br>
 
-# [Model without SNP effects](#model)
+## [Estimate genetic correlations](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
 
-</br>
+![](results/figures/CorrGWA.svg) </br></br>
 
-## Estimate genetic correlations
-
-</br></br>
-
-![](results/figures/CorrGWA.svg) </br>
-
-To prepare the data and run all analytical steps involved in deriving
-the genetic correlations, follow the script published
-[here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
-
-</br></br>
-
-## Specify the structural model
+## [Specify the structural model](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
 
 ![](results/figures/strucModel.png)
 
-</br></br></br></br>
+</br></br>
 
-# [Run the multivariate genome-wide association study](#modelSNP)
+## [Run the multivariate genome-wide association study](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
 
 ![](results/figures/ManHplot_commonLiability.jpeg)
 
 </br></br>
 
-# [Functional follow-up](#functional)
+## [Pasthway analysis in PASCAL and DEPICT](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
 
-# [LD score regression](#ldsc)
+![](results/figures/pascalPlot_comb.svg)
+
+</br></br>
+
+## [LD score regression analysis including other traits](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
+
+![](results/figures/PlotLDScore.svg)
+
+</br></br>
+
+## [Mendelian Randomization analysis](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
+
+</br></br>

@@ -46,9 +46,9 @@ common liability to addiction.
 
 ![](results/figures/CorrGWA.svg) </br>
 
-To prepare the data and run all analytical steps, follow the script
-published
-[here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/analysis)
+To prepare the data and run all analytical steps involved in deriving
+the genetic correlations, follow the script published
+[here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
 
 </br></br>
 

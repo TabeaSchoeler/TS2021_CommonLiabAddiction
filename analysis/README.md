@@ -765,3 +765,5 @@ write.table(gwa_input_name,
 [create an anchor](#anchors-in-markdown)
 
 [](#mendelian-randomization-analysis)
+
+# Mendelian Randomization Analysis

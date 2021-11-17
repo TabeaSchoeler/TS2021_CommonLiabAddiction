@@ -764,6 +764,4 @@ write.table(gwa_input_name,
 
 [create an anchor](#anchors-in-markdown)
 
-[click on this link](#my-multi-word-header)
-
 ### My Multi Word Header

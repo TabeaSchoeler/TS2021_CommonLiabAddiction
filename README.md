@@ -34,6 +34,8 @@ common liability to addiction.
 
 </br></br>
 
+1.  Download summary statistic files
+
 # [Model without SNP effects](#model)
 
 </br></br></br>
@@ -42,7 +44,11 @@ common liability to addiction.
 
 </br></br>
 
-![](results/figures/CorrGWA.svg)
+![](results/figures/CorrGWA.svg) </br>
+
+To prepare the data and run all analytical steps, follow the script
+published
+[here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/analysis)
 
 </br></br>
 
@@ -53,6 +59,8 @@ common liability to addiction.
 </br></br></br></br>
 
 # [Run the multivariate genome-wide association study](#modelSNP)
+
+![](results/figures/ManHplot_commonLiability.jpeg)
 
 </br></br>
 

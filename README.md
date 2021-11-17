@@ -76,6 +76,6 @@ Genome-wide association study on the common liability to addiction
 
 </br></br>
 
-## [Mendelian Randomization analysis](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#my-multi-word-header)
+## [Mendelian Randomization analysis](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#mendelian-randomization-analysis)
 
 </br></br>

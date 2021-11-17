@@ -58,7 +58,7 @@ Genome-wide association study on the common liability to addiction
 
 </br></br>
 
-## [Run the multivariate genome-wide association study](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
+## [Run the multivariate genome-wide association study](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#run-the-multivariate-genome-wide-association-study)
 
 ![](results/figures/ManHplot_commonLiability.jpeg)
 
@@ -70,7 +70,7 @@ Genome-wide association study on the common liability to addiction
 
 </br></br>
 
-## [LD score regression analysis including other traits](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
+## [LD score regression analysis including other traits](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#ld-score-regression-analysis-including-other-traits)
 
 ![](results/figures/PlotLDScore.svg)
 

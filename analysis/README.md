@@ -458,7 +458,9 @@ write.table(gwa_input_name,
 
 </br></br>
 
-# [Run the common liability GWA analysis](#gwaRun)
+# Run the multivariate genome-wide association study
+
+[](#run-the-multivariate-genome-wide-association-study)
 
 -   after having executed the script
     `R --no-save < $HOME/analysis/mungeSumstats.R`, the summary
@@ -762,8 +764,10 @@ write.table(gwa_input_name,
     qsub $HOME/analysis/processingMultiGWA.sh
     tail $HOME/output/processingMultiGWA/processingMultiGWA.log
 
-[create an anchor](#anchors-in-markdown)
+## LD score regression analysis including other traits
 
-[](#mendelian-randomization-analysis)
+[](#ld-score-regression-analysis-including-other-traits)
 
 # Mendelian Randomization Analysis
+
+[](#mendelian-randomization-analysis)

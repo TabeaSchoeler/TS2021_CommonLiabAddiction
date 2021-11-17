@@ -763,3 +763,7 @@ write.table(gwa_input_name,
     tail $HOME/output/processingMultiGWA/processingMultiGWA.log
 
 [create an anchor](#anchors-in-markdown)
+
+[click on this link](#my-multi-word-header)
+
+### My Multi Word Header

@@ -1,6 +1,8 @@
 Genome-wide association study on the common liability to addiction
 ================
 
+</br></br></br></br></br>&lt;
+
 ## Table of Contents
 
 1.  [Description](#description)
@@ -10,35 +12,45 @@ Genome-wide association study on the common liability to addiction
 5.  [Gene-set enrichment](#enrichment)
 6.  [LD score regression](#ldsc)
 
-# [Description](#description)
+</br></br>
+
+#### *The documentation below provides a brief overview of all steps involved in the analysis. All scripts and detailed documentations can be found in [ANALYSIS](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)*
 
 </br></br>
 
-The following documentation provides a description for all analytical
-steps involved in the multivariate genome-wide association study on the
-common liability to addiction.
+# [Getting started](#description)
 
-1.  Getting started with GenomicSEM
+</br></br>
+
+**Getting started with GenomicSEM**
 
 -   Read the [wiki and
     tutorial](https://github.com/GenomicSEM/GenomicSEM/wiki) for the
     R-package `GenomicSEM`
 
-1.  Install R packages
+**Install R packages**
 
-2.  Download all required software tool, including
+-   See
+    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
+    for the list packages to be installed
 
--   plink
--   DEPICT
--   PASCAL
+**Download the required software tools, including**
 
-</br></br>
+-   [PLINK](https://www.cog-genomics.org/plink/)
+-   [DEPICT](https://data.broadinstitute.org/mpg/depict/)
+-   [PASCAL](https://www2.unil.ch/cbg/index.php?title=Pascal)
 
-1.  Download summary statistic files
+**Download summary statistic files**
+
+-   See
+    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
+    for the list of summary statistic files included in this analysis
+
+</br></br></br>
 
 # [Model without SNP effects](#model)
 
-</br></br></br>
+</br>
 
 ## Estimate genetic correlations
 

@@ -27,15 +27,40 @@ colnames(gwasSumStast_sel)=c("Link to publication", "Link to summary statistic f
 ```
 
 
-</br></br>
+</br></br></br></br>
 
 ## Table of Contents
-1. [Download summary statistic files](#model)
-2. [Pre-processing of summary statistic files](#pre)
-3. [Munging of statistic files](#munge)
-4. [Specification of the structural model](#strucModel)
-5. [Run the common liability GWA analysis](#gwaRun)
-6. [Processing the common liability GWA output](#gwaOutput)
+1. [Install R packages](#packages)
+2. [Download summary statistic files](#model)
+3. [Pre-processing of summary statistic files](#pre)
+4. [Munging of statistic files](#munge)
+5. [Specification of the structural model](#strucModel)
+6. [Run the common liability GWA analysis](#gwaRun)
+7. [Processing the common liability GWA output](#gwaOutput)
+
+</br></br></br></br>
+
+
+#  [Install R packages](#packages)
+
+
+```{r, eval=FALSE}
+# Load and install libraries
+.libPaths( c( .libPaths(), "~/Dropbox/progs/R/library") )
+load.lib=c('pheatmap', 'ggthemes', 'ggpubr', 'Qtlizer', 'devtools', 'GenomicSEM', 'data.table', 'Matrix',
+           'sem', 'Matrix', 'stats', 'semTools', 'ggcorrplot', 'grex', 'openxlsx', 'rJava', 'qqman', 'gmodels', 'ggplot2',
+           'ggcorrplot', 'tidyverse', 'reshape2', 'pdftools', 'plyr', 'phenoscanner','ggpubr',
+           'biomaRt', 'viridis', 'rdrop2', 'lavaan', 'gprofiler2', 'knitr',
+           'gridExtra', 'CMplot', 'configr', 'purrr', 'TwoSampleMR', 'GOexpress', 'ieugwasr', 'xlsx')
+
+
+install.lib<-load.lib[!load.lib %in% installed.packages()]
+
+# Install missing packages
+for(lib in install.lib) install.packages(lib, dependencies=TRUE)
+# Load all packages
+sapply(load.lib,require,character=TRUE)
+```
 
 </br></br>
 
@@ -699,4 +724,8 @@ qsub $HOME/analysis/processingMultiGWA.sh
 tail $HOME/output/processingMultiGWA/processingMultiGWA.log
 
 ```
+
+
+[create an anchor](#anchors-in-markdown)
+
 

@@ -31,7 +31,7 @@ Genome-wide association study on the common liability to addiction
 **Install R packages**
 
 -   See
-    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
+    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#install-r-packages)
     for the list packages to be installed
 
 **Download the required software tools, including**
@@ -43,16 +43,24 @@ Genome-wide association study on the common liability to addiction
 **Download summary statistic files**
 
 -   See
-    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
+    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#download-summary-statistic-files)
     for the list of summary statistic files included in this analysis
 
 </br></br></br>
 
-## [Estimate genetic correlations](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
+# [Pre-processing of the summary statistic files](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#pre-processing-of-the-summary-statistic-files)
+
+-   includes formatting of the summary statistic files
+-   running the `munge()` function to prepare the data for LD score
+    regression analysis
+
+</br></br></br>
+
+# [Estimate genetic correlations](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#estimate-genetic-correlations)
 
 ![](results/figures/CorrGWA.svg) </br></br>
 
-## [Specify the structural model](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)
+# [Specify the structural model](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#specify-the-structural-model)
 
 ![](results/figures/strucModel.png)
 

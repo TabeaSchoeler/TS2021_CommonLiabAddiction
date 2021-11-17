@@ -5,17 +5,24 @@ Analysis
 
 ## Table of Contents
 
-1.  [Install R packages](#packages)
-2.  [Download summary statistic files](#model)
-3.  [Pre-processing of summary statistic files](#pre)
-4.  [Munging of statistic files](#munge)
-5.  [Specification of the structural model](#strucModel)
-6.  [Run the common liability GWA analysis](#gwaRun)
-7.  [Processing the common liability GWA output](#gwaOutput)
+1.  [Install R packages](#install-r-packages)
+2.  [Download summary statistic
+    files](#download-summary-statistic-files)
+3.  [Pre-processing of summary statistic
+    files]((#pre-processing-of-the-summary-statistic-files))
+4.  [Munging of statistic files](#munging-of-statistic-files)
+5.  [Specification of the structural
+    model](#estimate-genetic-correlations)
+6.  [Run the multivariate genome-wide association
+    study](#run-the-multivariate-genome-wide-association-study)
+7.  [Processing the common liability GWA
+    output](#ld-score-regression-analysis-including-other-traits)
 
 </br></br></br></br>
 
-# [Install R packages](#packages)
+# Install R packages
+
+[](#install-r-packages)
 
 ``` r
 # Load and install libraries
@@ -37,7 +44,9 @@ sapply(load.lib,require,character=TRUE)
 
 </br></br>
 
-# [Download summary statistic files](#model)
+# Download summary statistic files
+
+[](#download-summary-statistic-files)
 
 | Link to publication                                                                             | Link to summary statistic file                                                                                                                                                       |
 |:------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -85,7 +94,9 @@ sapply(load.lib,require,character=TRUE)
 
 </br></br>
 
-# [Pre-processing of summary statistic files](#pre)
+# Pre-processing of the summary statistic files
+
+[](#pre-processing-of-the-summary-statistic-files)
 
 -   Below is the pipeline that runs all the pre-processing steps of the
     summary statistic files and then performs the LD score regression
@@ -232,7 +243,7 @@ for ( i in 1:length(gwasSumStast$DirPath) ) {
 
 </br></br>
 
-# [Munging of statistic files](#munge)
+# [Munging of statistic files](#munging-of-statistic-files)
 
 -   the files are now munged using the `munge()` function implemented in
     `GenomicSEM`
@@ -255,11 +266,17 @@ for ( i in 1:length(gwasSumStast$DirPath) ) {
 
 </br>
 
--   in the next steps, multivariate LD score regression analysis is
-    performed
--   Genomic control was applied to all summary statistics showing
-    evidence of uncontrolled confounding (LD score intercept &gt; 1), by
-    multiplying standard errors by the LD score intercept
+</br></br></br>
+
+# Estimate genetic correlations
+
+[](#estimate-genetic-correlations)
+
+-   in this step, multivariate LD score regression analysis is performed
+-   Please note that genomic control was applied to all summary
+    statistics showing evidence of uncontrolled confounding (LD score
+    intercept &gt; 1), by multiplying standard errors by the LD score
+    intercept
 
 ``` r
 # ======================================= LD SCORE REGRESSION
@@ -354,9 +371,11 @@ drop_acc()
 drop_upload(paste0(HOME,"/output/rds/LDSCoutput_", modelName, "_SUD.rds"), path = paste0(LOCAL, "/output/rds")) 
 ```
 
-</br></br>
+</br></br></br>
 
-# [Specification of the structural model](#strucModel)
+# Specify the structural model
+
+[](#specify-the-structural-model)
 
 -   the common liability model is specified using lavaan syntax
 -   Equality constrains were imposed on paths belonging to the same
@@ -716,9 +735,9 @@ write.table(gwa_input_name,
     time=47 # running time in hours
     GenSEMrun "nCores" "model" "output" "estimation" "extract" "time"
 
-</br></br>
+</br></br></br>
 
-# [Processing the common liability GWA output](#gwaOutput)
+# [Processing the common liability GWA output](#ld-score-regression-analysis-including-other-traits)
 
 -   once we have the GWA results, we can submit the Rscript
     [processingMultiGWA.R](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)

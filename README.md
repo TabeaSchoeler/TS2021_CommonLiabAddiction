@@ -3,17 +3,6 @@ Genome-wide association study on the common liability to addiction
 
 </br></br></br></br></br>
 
-## Table of Contents
-
-1.  [Description](#description)
-2.  [Estimate genetic correlations](#estimate-correlations)
-3.  [Specify the structural mode](#specify-structural-modell)
-4.  [Gene annotation](#functional)
-5.  [Gene-set enrichment](#enrichment)
-6.  [LD score regression](#ldsc)
-
-</br></br>
-
 #### *The documentation below provides a brief overview of all steps involved in the analysis. All scripts and detailed documentations can be found in [ANALYSIS](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)*
 
 #### *The scripts have to be executed in the following order:*
@@ -25,8 +14,6 @@ Genome-wide association study on the common liability to addiction
 </br></br>
 
 # [Getting started](#description)
-
-</br>
 
 **Getting started with GenomicSEM**
 
@@ -59,63 +46,71 @@ Genome-wide association study on the common liability to addiction
 -   includes formatting of the summary statistic files
 -   running the `munge()` function to prepare the data for LD score
     regression analysis
+-   he script can be found
+    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#pre-processing-of-the-summary-statistic-files)
 
 </br></br></br>
 
 # [Estimate genetic correlations](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#estimate-genetic-correlations)
 
--   The script can be found
+-   the script can be found
     [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#estimate-genetic-correlations)
 
-[](#estimate-correlations)
-
-![](results/figures/CorrGWA.svg) </br></br>
+![](results/figures/CorrGWA.svg) </br></br></br>
 
 # [Specify the structural model](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#specify-the-structural-model)
 
--   The script can be found
+-   the script can be found
     [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#specify-the-structural-model)
-
-[](#specify-structural-model)
 
 ![](results/figures/strucModel.png)
 
-</br></br>
+</br></br></br>
 
 # [Run the multivariate genome-wide association study](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#run-the-multivariate-genome-wide-association-study)
 
+-   the script can be found
+    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#run-the-multivariate-genome-wide-association-study)
+
 ![](results/figures/ManHplot_commonLiability.jpeg)
 
-</br></br>
+</br></br></br>
 
 # [Clumping and gene mapping](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#clumping-and-gene-mapping)
 
+-   the script can be found
+    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#clumping-and-gene-mapping)
+
 ![](results/figures/clumpedMediatedPlot.svg)
 
-</br></br>
+</br></br></br>
 
 # [Pasthway analysis in PASCAL and DEPICT](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#pasthway-analysis-in-PASCAL-and-DEPICT)
 
+-   the script can be found
+    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#pasthway-analysis-in-PASCAL-and-DEPICT)
+
 ![](results/figures/pascalPlot_comb.svg)
 
-</br></br>
+</br></br></br>
 
 ## [LD score regression analysis including other traits](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#ld-score-regression-analysis-including-other-traits)
 
+-   the script can be found
+    [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#ld-score-regression-analysis-including-other-traits)
+
 ![](results/figures/PlotLDScore.svg)
 
-</br></br>
+</br></br></br>
 
 # [Mendelian Randomization analysis](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#mendelian-randomization-analysis)
 
 -   the script can be found
     [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#mendelian-randomization-analysis)
 
-</br></br>
-
 ![](results/figures/MrPlot.svg)
 
-</br></br>
+</br></br></br>
 
 # [Create Supplementary tables](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#create-supplementary-tables)
 
@@ -128,7 +123,7 @@ Genome-wide association study on the common liability to addiction
 ### sTable 1
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1144,7 +1139,7 @@ implemented in GenomicSEM
 ### sTable 2
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1330,7 +1325,7 @@ displayed down the diagonal. The mean genetic correlation is rg=0.4
 ### sTable 3
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1458,7 +1453,7 @@ phenotypes.
 ### sTable 4
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1515,7 +1510,7 @@ the standardized root mean square residual
 ### sTable 5
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1726,7 +1721,7 @@ across the individual cigarette, alcohol and cannabis use phenotyes
 
 ### sTable 6
 
-<div style='border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;' class=" lightable-material-dark">
+<div style='border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;' class=" lightable-material-dark">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 sTable 6. Summary of lead genetic variants associated with the commmon
@@ -9392,7 +9387,7 @@ phenotyes (Q\_sig = Qsnp p&lt;5×10−8)
 ### sTable 7
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -33794,7 +33789,7 @@ Table of the results displayed in Figure 2 of the main manuscript
 ### sTable 8
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -47000,7 +46995,7 @@ Qtlizer.
 ### sTable 9
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -47631,7 +47626,7 @@ PhenoScanner database
 ### sTable 10
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -71089,7 +71084,7 @@ significance (p&lt;1×10-5).
 ### sTable 11
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -138584,7 +138579,7 @@ individual substance use phenotypes
 ### sTable 12
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -139318,7 +139313,7 @@ Social isolation
 ### sTable 13
 
 <div class="lightable-material-dark"
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%;  font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>

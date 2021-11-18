@@ -10,10 +10,10 @@ rm(list = ls())
 
 # Load and install libraries
 .libPaths( c( .libPaths(), "~/Dropbox/progs/R/library") )
-load.lib=c('pheatmap', 'ggthemes', 'ggpubr', 'Qtlizer', 'devtools', 'GenomicSEM', 'semPlot', 'data.table', 'Matrix',
+load.lib=c('pheatmap', 'ggthemes', 'ggpubr', 'Qtlizer', 'devtools', 'GenomicSEM', 'data.table', 'Matrix',
            'sem', 'Matrix', 'stats', 'semTools', 'ggcorrplot', 'grex', 'openxlsx', 'rJava', 'qqman', 'gmodels', 'ggplot2',
-           'ggcorrplot', 'tidyverse', 'reshape2', 'pdftools', 'plyr', 'magick', 'phenoscanner', 'VennDiagram','ggpubr',
-           'biomaRt', 'viridis', 'rdrop2', 'lavaan', 'lavaanPlot', 'DiagrammeRsvg', 'DiagrammeR', 'gprofiler2', 'knitr',
+           'ggcorrplot', 'tidyverse', 'reshape2', 'pdftools', 'plyr', 'phenoscanner','ggpubr',
+           'biomaRt', 'viridis', 'rdrop2', 'lavaan', 'gprofiler2', 'knitr',
            'gridExtra', 'CMplot', 'configr', 'purrr', 'TwoSampleMR', 'GOexpress', 'ieugwasr', 'xlsx')
 
 
@@ -597,7 +597,6 @@ postGWA_clump_genesDF=postGWA_clump_genesDF[order(match(postGWA_clump_genesDF$ID
 postGWA_clump_genesDF$order=seq(1:length(postGWA_clump_genesDF$SNP))
 
 # Add row breaks
-#postGWA_clump_genesDF$Label_clean = as.factor(swr(recodeName(orderLabels(as.factor(postGWA_clump_genesDF$Label))), nwrap=10))
 postGWA_clump_genesDF$Label_clean=as.factor(recodeName(orderLabels(as.factor(postGWA_clump_genesDF$Label))))
 
 # Get confidence interval
@@ -644,6 +643,9 @@ print(clumpedMediatedPlottopPheno)
 clumpedMediatedPlot_width=27
 clumpedMediatedPlot_height=40
 ggsave(paste0(HOME,"/results/figures/clumpedMediatedPlot.pdf"), clumpedMediatedPlottopPheno,  width = clumpedMediatedPlot_width, height = clumpedMediatedPlot_height, units = "cm", limitsize = TRUE)
+ggsave(paste0(HOME,"/results/figures/clumpedMediatedPlot.svg"), clumpedMediatedPlottopPheno,  width = clumpedMediatedPlot_width, height = clumpedMediatedPlot_height, units = "cm", limitsize = TRUE, bg="white")
+
+
 
 
 
@@ -771,7 +773,6 @@ readinDepict=function(name){
   dfOut$p_corr_dich = ifelse(dfOut$p_corr < 0.05 , "p_cor_sig", "p_cor_ns")
   return(dfOut)
 }
-
 depictOut=lapply(phenoNames, function(x) readinDepict(x))
 names(depictOut)=phenoNames
 
@@ -1086,6 +1087,8 @@ pascalPlot_comb=ggarrange(DEPICT_heatmap,
 pascalPlot_width=44
 pascalPlot_height=35
 ggsave(paste0(HOME,"/results/figures/pascalPlot_comb.pdf"), pascalPlot_comb,  width = pascalPlot_width, height = pascalPlot_height, units = "cm", limitsize = TRUE)
+ggsave(paste0(HOME,"/results/figures/pascalPlot_comb.svg"), pascalPlot_comb,  width = pascalPlot_width, height = pascalPlot_height, units = "cm", limitsize = TRUE, bg="white")
+
 
 
 
@@ -1183,6 +1186,7 @@ print(ldscPlot_filter)
 ldscPlot_width=16
 ldscPlot_height=27
 ggsave(paste0(HOME,"/results/figures/PlotLDScore.pdf"), ldscPlot_filter,  width = ldscPlot_width, height = ldscPlot_height, units = "cm", limitsize = FALSE)
+ggsave(paste0(HOME,"/results/figures/PlotLDScore.svg"), ldscPlot_filter,  width = ldscPlot_width, height = ldscPlot_height, units = "cm", limitsize = FALSE, bg="white")
 
 
 # +++++++++ Create Tables for supplementary: Results LD score regression analysis
@@ -1232,8 +1236,6 @@ postGWA_clumpFiltered=imap(postGWA_clump, function(x, y) filterQtest(x,y))
 # Prepare sumstats for GWA without significant hits
 sumStatsListFiltered=imap(sumStatsList, function(x, y) filterQtest(x,y))
 clumpedMR_filtered=list()
-
-
 
 
 # Extraxt exposure SNPs
@@ -1315,7 +1317,7 @@ str(postGWA_clump_Qfilter_MAF_exp)
 
 
 
-# ===== Harmonize exposure data with outcome data
+# ===== Harmonize exposure data with outcome data and run MR
 
 # Create lists for output
 list_out=list()
@@ -1376,16 +1378,10 @@ for ( j in 1:length(phenoNames) ) {
     if(NROW(MReggerSub)==0){
       MReggerSub[nrow(MReggerSub)+1,] <- NA
     }
-    if(NROW(MRmedianSub)==0){
-      MRmedianSub[nrow(MRmedianSub)+1,] <- NA
-    }
-    if(NROW(MRmode)==0){
-      MRmode[nrow(MRmode)+1,] <- NA
-    }
     if(NROW(HETmrSub)==0){
       HETmrSub[nrow(HETmrSub)+1,] <- NA
     }
-    list_out[[i]]=cbind(MRout, MReggerSub, pleiotropySub, MRmedianSub, MRmode, HETmrSub, mrPressoSub)
+    list_out[[i]]=cbind(MRout, MReggerSub, pleiotropySub, HETmrSub)
 
   }
 
@@ -1405,10 +1401,6 @@ MRout_bind=subset(MRout_bind, MRout_bind$outcome!=MRout_bind$exposure)
 # Derive confidence interval
 MRout_bind$ci.U=MRout_bind$b + 1.96 * MRout_bind$se
 MRout_bind$ci.L=MRout_bind$b - 1.96 * MRout_bind$se
-
-
-
-
 
 # ===== Plot MR results
 MRout_plot=subset(MRout_bind, exposure %in% phenoNames & outcome %in% phenoNames)
@@ -1473,6 +1465,8 @@ MR_plot_supp = MR_plotList[[2]] + theme(legend.position="top")
 MrPlot_width=12
 MrPlot_height=15
 ggsave(paste0(HOME,"/results/figures/MrPlot.pdf"), MR_plot,  width = MrPlot_width, height = MrPlot_height, units = "cm", limitsize = FALSE)
+ggsave(paste0(HOME,"/results/figures/MrPlot.svg"), MR_plot,  width = MrPlot_width, height = MrPlot_height, units = "cm", limitsize = FALSE, bg="white")
+
 
 # Save plot (supplement)
 ggsave(paste0(HOME,"/results/figures/MrPlot_supp.pdf"), MR_plot_supp,  width = MrPlot_width, height = MrPlot_height, units = "cm", limitsize = FALSE)
@@ -1576,13 +1570,19 @@ LDscoreRegressionData="sTable 1"
 addWorksheet(wb, LDscoreRegressionData)
 # Add datatable
 title_name=paste0("sTable 1. Overview of summary statistic files used in the multivariate genome-wide association study")
-Info_text=paste0("List of summary statistic files used to derive the common hertiable liability to addiction, as well as all summary statistic files used in LD score regression analysis assessing the genetic correlations between the common liability and other traits. Heritability (h2) estimates and the intercepts were estimated using univariate LD score regression implemented in GenomicSEM")
+infoTextGWAoverview=paste0("List of summary statistic files used to derive the common hertiable liability to addiction, as well as all summary statistic files used in LD score regression analysis assessing the genetic correlations between the common liability and other traits. Heritability (h2) estimates and the intercepts were estimated using univariate LD score regression implemented in GenomicSEM")
+Info_text=infoTextGWAoverview
 sheet=LDscoreRegressionData
 table=gwasSumStast
 # Run functions
 addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
+
+# Store as list
+listT1=list(data=gwasSumStast,
+     description=infoTextGWAoverview,
+     title=title_name)
 
 
 # ================================ TABLE 2 ================================ #
@@ -1627,6 +1627,11 @@ addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
 
+# Store as list
+listT2=list(data=as.data.frame(GenomicSEM_ldscTable),
+            description=Info_text,
+            title=title_name)
+
 
 # ================================ TABLE 3 ================================ #
 # Import correlation results from ldsc regression analysis
@@ -1668,6 +1673,13 @@ addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
 
+# Store as list
+listT3=list(data=as.data.frame(CommonFacRes_selected),
+            description=modelEstimates_info,
+            title=title_name)
+
+
+
 # ================================ TABLE 4 ================================ #
 # Format decimals
 CommonFac$modelfit=formatNum(vecNum=c("chisq", "CFI", "SRMR"), vecP=c("p_chisq"),df=CommonFac$modelfit)
@@ -1688,6 +1700,12 @@ headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
 
 
+# Store as list
+listT4=list(data=as.data.frame(CommonFac$modelfit),
+            description=modelFit_info,
+            title=title_name)
+
+
 # ================================ TABLE 5 ================================ #
 GWA_shortSum$GWAS=recodeName(phenoNames)
 # Create new sheet
@@ -1703,6 +1721,11 @@ Info_text=GWA_short_info
 addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
+
+# Store as list
+listT5=list(data=as.data.frame(GWA_shortSum),
+            description=GWA_short_info,
+            title=title_name)
 
 
 # ================================ TABLE 6 ================================ #
@@ -1729,6 +1752,10 @@ addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
 
+# Store as list
+listT6=list(data=as.data.frame(clumpResTable),
+            description=GWA_clump_info,
+            title=title_name)
 
 # ================================ TABLE 7 ================================ #
 postGWA_clump_genesDF$Label=recodeName(postGWA_clump_genesDF$Label)
@@ -1747,6 +1774,11 @@ Info_text=GWA_clump_long_info
 addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
+
+# Store as list
+listT7=list(data=as.data.frame(postGWA_clump_genes_select),
+            description=GWA_clump_long_info,
+            title=title_name)
 
 
 # ================================ TABLE 8 ================================ #
@@ -1783,6 +1815,11 @@ addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
 
+# Store as list
+listT8=list(data=as.data.frame(mergeQTLTable),
+            description=Info_text,
+            title=title_name)
+
 
 # ================================ TABLE 9 ================================ #
 # Format decimals
@@ -1803,6 +1840,10 @@ addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
 
+# Store as list
+listT9=list(data=as.data.frame(postGWA_clumpPhenoDF_suppl),
+            description=Info_text,
+            title=title_name)
 
 # ================================ TABLE 10 ================================ #
 depictOutTable=mergeLongFormat(depictOut, phenoNames, cleanLabel = TRUE)
@@ -1822,6 +1863,12 @@ table=depictOutTable
 addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
+
+# Store as list
+listT10=list(data=as.data.frame(depictOutTable),
+            description=Info_text,
+            title=title_name)
+
 
 
 # ================================ TABLE 11 ================================ #
@@ -1846,6 +1893,10 @@ addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
 
+# Store as list
+listT11=list(data=as.data.frame(PascalSuppSel),
+             description=Info_text,
+             title=title_name)
 
 # ================================ TABLE 12 ================================ #
 # Create new sheet
@@ -1860,6 +1911,11 @@ table=LdScoreResultsExport
 addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
+
+# Store as list
+listT12=list(data=as.data.frame(LdScoreResultsExport),
+             description=Info_text,
+             title=title_name)
 
 
 # ================================ TABLE 13 ================================ #
@@ -1876,11 +1932,21 @@ addTable(sheet, table)
 headerFunc(title_name, sheet)
 InfoFunc(Info_text, sheet)
 
+# Store as list
+listT13=list(data=as.data.frame(MRout_export),
+             description=Info_text,
+             title=title_name)
+
+
 
 
 ################################################################
 # ====================== Export table ==================
 ################################################################
+
+listAll=list(listT1, listT2, listT3, listT4, listT5, listT6, listT7, listT8, listT9, listT10, listT11, listT12, listT13)
+saveRDS(listAll, paste0(HOME,"/results/tables/TableSum.rds"))
+
 
 # Create new styles
 s <- createStyle(fgFill = "#FFFFFF")
@@ -1898,7 +1964,7 @@ for(curr_sheet in names(wb)){
 }
 
 library( openxlsx)
-openxlsx::saveWorkbook(wb, paste0(HOME,"/results/tables/GenomicSEM_resultsNovember2021.xlsx"), overwrite = TRUE)
+openxlsx::saveWorkbook(wb, paste0(HOME,"/results/tables/CommomLiabAddiction_Tables.xlsx"), overwrite = TRUE)
 # Open File
 openXL(wb)
 
@@ -1925,7 +1991,7 @@ CorrGWA_height=15
 ggsave(paste0(HOME,"/results/figures/CorrGWA.pdf"), plot = CorrGWA, width = CorrGWA_width, height = CorrGWA_height,
        units = "cm", limitsize = FALSE)
 ggsave(paste0(HOME,"/results/figures/CorrGWA.svg"), plot = CorrGWA, width = CorrGWA_width, height = CorrGWA_height,
-       units = "cm", limitsize = FALSE)
+       units = "cm", limitsize = FALSE, bg="white")
 
 PlotCorrGWA=paste0(HOME,"/results/figures/CorrGWA.pdf")
 

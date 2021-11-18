@@ -87,9 +87,9 @@ Summary statistic files
     summary statistic files and then performs the LD score regression
     analysis
 -   The code below is copied from the shell script
-    [‘CommonLiabAddiction.sh’](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.sh),
+    [CommonLiabAddiction.sh](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.sh),
     which relies on the R script
-    [‘CommonLiabAddiction.R’](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.R)
+    [CommonLiabAddiction.R](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.R)
 
 </br>
 
@@ -130,7 +130,7 @@ Summary statistic files
 </br>
 
 -   the script
-    [‘CommonLiabAddiction.R’](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.R)
+    [CommonLiabAddiction.R](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.R)
     will read in all the summary statistic files from
     [GenSEM\_GWAS.xlsx](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/)
     that are selected to be included in the multivariate genome-wide
@@ -228,7 +228,7 @@ for ( i in 1:length(gwasSumStast$DirPath) ) {
 
 </br></br>
 
-# [Munging of statistic files](#munging-of-statistic-files)
+# Munging of statistic files
 
 -   the files are now munged using the `munge()` function implemented in
     `GenomicSEM`
@@ -1809,7 +1809,8 @@ ggsave(paste0(HOME,"/results/figures/pascalPlot_comb.svg"), pascalPlot_comb,  wi
 ### DEPICT
 
 Note that the analysis done using DEPICT is included in the R Script
-‘CommonLiabAddiction.R’ and was performed on a desktop computer
+[CommonLiabAddiction.R](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.R)
+and was performed on a desktop computer
 
     ################################################
     # ======== DEPICT  =============================
@@ -2445,6 +2446,8 @@ MRout_export=subset(MRout_export, select=c(exposure, outcome, est_CI, pval, inte
 # Rename column names
 colnames(MRout_export)=c("Exposure", "Outcome", "beta (95% CI) (IVW)", "p-value (IVW)","p-value (MR-Egger intercept)","number of genetic instruments used in MR", "description of SNPs selected as instruments")
 ```
+
+</br></br></br>
 
 # Create Supplementary tables
 

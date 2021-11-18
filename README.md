@@ -1,9 +1,13 @@
 Genome-wide association study on the common liability to addiction
 ================
 
-</br></br></br></br></br>
+</br></br>
 
-#### *The documentation below provides a brief overview of all steps involved in the analysis. All scripts and detailed documentations can be found in [ANALYSIS](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)*
+![](results/figures/blue.png)
+
+### *The documentation below provides a brief overview of all steps involved in the analysis. All scripts and detailed documentations can be found in [ANALYSIS](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis)*
+
+</br>
 
 #### *The scripts have to be executed in the following order:*
 
@@ -11,7 +15,11 @@ Genome-wide association study on the common liability to addiction
 
 ##### *Script 2: `CommonLiabAddiction.R` (used on a desctop computer)*
 
-</br></br>
+</br>
+
+![](results/figures/blue.png)
+
+</br>
 
 # [Getting started](#description)
 
@@ -46,7 +54,7 @@ Genome-wide association study on the common liability to addiction
 -   includes formatting of the summary statistic files
 -   running the `munge()` function to prepare the data for LD score
     regression analysis
--   he script can be found
+-   the script can be found
     [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#pre-processing-of-the-summary-statistic-files)
 
 </br></br></br>
@@ -94,7 +102,7 @@ Genome-wide association study on the common liability to addiction
 
 </br></br></br>
 
-## [LD score regression analysis including other traits](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#ld-score-regression-analysis-including-other-traits)
+# [LD score regression analysis including other traits](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#ld-score-regression-analysis-including-other-traits)
 
 -   the script can be found
     [here](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/tree/master/analysis#ld-score-regression-analysis-including-other-traits)

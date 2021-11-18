@@ -6,7 +6,7 @@ output:
 ---
 
 
-```{r, results='hide', echo=FALSE, message=FALSE, warning = FALSE}
+```{r, results='hide', echo=FALSE, message=FALSE, warning = FALSE, eval=TRUE}
 
 .libPaths("~/Dropbox/progs/R/library")
 library(knitr)
@@ -85,7 +85,7 @@ knitr::kable(gwasSumStast_sel,
 
 
 - Below is the pipeline that runs all the pre-processing steps of the summary statistic files and then performs the LD score regression analysis
-- The code below is copied from the shell script ['CommonLiabAddiction.sh'](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.sh), which relies on the R script ['CommonLiabAddiction.R'](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.R)
+- The code below is copied from the shell script [CommonLiabAddiction.sh](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.sh), which relies on the R script [CommonLiabAddiction.R](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.R)
 
 </br>
 
@@ -128,7 +128,7 @@ qsub $HOME/analysis/mungeSumstats.sh
 
 </br>
 
-- the script  ['CommonLiabAddiction.R'](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.R) will read in all the summary statistic files from [GenSEM_GWAS.xlsx](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/) that are selected to be included in the multivariate genome-wide association analysis. Selected are those that those with ```directory == "gensem"```
+- the script  [CommonLiabAddiction.R](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.R) will read in all the summary statistic files from [GenSEM_GWAS.xlsx](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/) that are selected to be included in the multivariate genome-wide association analysis. Selected are those that those with ```directory == "gensem"```
 
 - all summary statistic files have to to be stored in a parent directory (e.g. `gwasDir="path/to/sumstats"`), with all sub-directories being specified in the column "fileName" in the excel sheet [GenSEM_GWAS.xlsx](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/)
 
@@ -205,7 +205,7 @@ for ( i in 1:length(gwasSumStast$DirPath) ) {
 
 </br></br>
 
-# [Munging of statistic files](#munging-of-statistic-files)
+# Munging of statistic files
 
 
 - the files are now munged using the ```munge()``` function implemented in `GenomicSEM`
@@ -1790,7 +1790,7 @@ ggsave(paste0(HOME,"/results/figures/pascalPlot_comb.svg"), pascalPlot_comb,  wi
 
 ### DEPICT
 
-Note that the analysis done using DEPICT is included in the R Script 'CommonLiabAddiction.R' and was performed on a desktop computer
+Note that the analysis done using DEPICT is included in the R Script [CommonLiabAddiction.R](https://github.com/TabeaSchoeler/TS2021_CommonLiabAddiction/blob/master/analysis/CommonLiabAddiction.R) and was performed on a desktop computer
 
 ```
 ################################################
@@ -2432,7 +2432,7 @@ colnames(MRout_export)=c("Exposure", "Outcome", "beta (95% CI) (IVW)", "p-value 
 
 
 
-
+</br></br></br>
 
 # Create Supplementary tables
 

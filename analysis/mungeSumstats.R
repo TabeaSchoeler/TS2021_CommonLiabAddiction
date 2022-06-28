@@ -19,7 +19,7 @@ gwasSumStastAll$DirPath=paste0(gwasDir,gwasSumStastAll$fileName)
 # Get name for zipped / munged files
 gwasSumStastAll$DirPathgz=paste0(HOME,"/data/processed/", gwasSumStastAll$label, ".sumstats.gz") # Include original GWAS as well as munged GWAS files
 # Select only substance use traits
-gwasSumStast = subset(gwasSumStastAll, directory == "gensem" )
+gwasSumStast = subset(gwasSumStastAll, directory == "gensem")
 
 # Get sample prevalence
 # Note: for binary traits - if this reflect the sum of effective sample sizes across contributing cohorts for case/control designs, the sample prevalence should then be entered as 0.5 when running ldsc to reflect the fact that effective sample size already corrects for sample ascertainment. 
@@ -167,6 +167,10 @@ drop_upload(paste0(HOME,"/output/rds/LDSCoutput_", modelName, "_SUD.rds"), path 
 
 
 
+
+LDSCoutput_SUD=readRDS(paste0(HOME,"/output/rds/LDSCoutput_", modelName, "_SUD.rds"))
+
+
 # Constrained and correalted residuals
 model <- 'F1 =~ 1*CigaretteDependency + x*CigaretteDependency + y*DrinksPerWeek + y*CigarettesPerDay + x*AlcoholDependency + y*CannabisUseFrequency + x*CannabisUseDisorder
       DrinksPerWeek ~~ a*DrinksPerWeek
@@ -185,22 +189,203 @@ model <- 'F1 =~ 1*CigaretteDependency + x*CigaretteDependency + y*DrinksPerWeek 
       f > .0001
       g > .0001'
 
+
+model2 <- 'F1 =~ 1*CigaretteDependency + DrinksPerWeek + CigarettesPerDay + AlcoholDependency + CannabisUseFrequency + CannabisUseDisorder
+      DrinksPerWeek ~~ a*DrinksPerWeek
+      CigarettesPerDay ~~ c*CigarettesPerDay
+      CigaretteDependency ~~ d*CigaretteDependency
+      AlcoholDependency ~~ e*AlcoholDependency
+      CannabisUseFrequency ~~ f*CannabisUseFrequency
+      CannabisUseDisorder ~~ g*CannabisUseDisorder
+      AlcoholDependency ~~ DrinksPerWeek
+      CigaretteDependency ~~ CigarettesPerDay
+      CannabisUseDisorder ~~ CannabisUseFrequency
+      a > .0001
+      c > .0001
+      d > .0001
+      e > .0001
+      f > .0001
+      g > .0001'
+
+
+model3 <- 'F1 =~ 1*CigaretteDependency + DrinksPerWeek + CigarettesPerDay + AlcoholDependency + CannabisUseFrequency + CannabisUseDisorder
+      DrinksPerWeek ~~ a*DrinksPerWeek
+      CigarettesPerDay ~~ c*CigarettesPerDay
+      CigaretteDependency ~~ d*CigaretteDependency
+      AlcoholDependency ~~ e*AlcoholDependency
+      CannabisUseFrequency ~~ f*CannabisUseFrequency
+      CannabisUseDisorder ~~ g*CannabisUseDisorder
+      a > .0001
+      c > .0001
+      d > .0001
+      e > .0001
+      f > .0001
+      g > .0001'
+
+model4 <- 'F1 =~ 1*CigaretteDependency + x*CigaretteDependency + y*DrinksPerWeek + y*CigarettesPerDay + x*AlcoholDependency + y*CannabisUseFrequency + x*CannabisUseDisorder
+      DrinksPerWeek ~~ a*DrinksPerWeek
+      CigarettesPerDay ~~ c*CigarettesPerDay
+      CigaretteDependency ~~ d*CigaretteDependency
+      AlcoholDependency ~~ e*AlcoholDependency
+      CannabisUseFrequency ~~ f*CannabisUseFrequency
+      CannabisUseDisorder ~~ g*CannabisUseDisorder
+      a > .0001
+      c > .0001
+      d > .0001
+      e > .0001
+      f > .0001
+      g > .0001'
+
+
+model5 <- 'F1 =~ 1*CigaretteDependency + DrinksPerWeek + CigarettesPerDay + AlcoholDependency + CannabisUseFrequency + CannabisUseDisorder
+cigFac =~ 1*CigarettesPerDay + j*CigarettesPerDay + j*CigaretteDependency
+canFac =~ 1*CannabisUseFrequency + k*CannabisUseFrequency  + k*CannabisUseDisorder
+alcFac =~ 1*DrinksPerWeek + l*DrinksPerWeek + l*AlcoholDependency
+DrinksPerWeek ~~ a*DrinksPerWeek
+CigarettesPerDay ~~ b*CigarettesPerDay
+CigaretteDependency ~~ c*CigaretteDependency
+AlcoholDependency ~~ d*AlcoholDependency
+CannabisUseFrequency ~~ e*CannabisUseFrequency
+CannabisUseDisorder ~~ f*CannabisUseDisorder
+F1 ~~ 0*cigFac
+F1 ~~ 0*canFac
+F1 ~~ 0*alcFac
+cigFac ~~ g*cigFac
+canFac ~~ h*canFac
+alcFac ~~ i*alcFac
+cigFac ~~ 0*canFac
+cigFac ~~ 0*alcFac
+canFac ~~ 0*alcFac
+a > .0001
+b > .0001
+c > .0001
+d > .0001
+e > .0001
+f > .0001
+g > .0001
+h > .0001
+i > .0001'
+
+model6 <- 'F1 =~ 1*CigaretteDependency + x*CigaretteDependency  + y*DrinksPerWeek + y*CigarettesPerDay + x*AlcoholDependency + y*CannabisUseFrequency + x*CannabisUseDisorder
+depFac =~ 1*CigaretteDependency + CannabisUseDisorder + AlcoholDependency
+DrinksPerWeek ~~ a*DrinksPerWeek
+CigarettesPerDay ~~ b*CigarettesPerDay
+CigaretteDependency ~~ c*CigaretteDependency
+AlcoholDependency ~~ d*AlcoholDependency
+CannabisUseFrequency ~~ e*CannabisUseFrequency
+CannabisUseDisorder ~~ f*CannabisUseDisorder
+F1 ~~ 0*depFac
+depFac ~~ g*depFac
+F1 ~~ h*F1
+a > .0001
+b > .0001
+c > .0001
+d > .0001
+e > .0001
+f > .0001
+g > .0001
+h > .0001'
+
+
+model7 <- '
+cigFac =~ 1*CigarettesPerDay + j*CigarettesPerDay + j*CigaretteDependency
+canFac =~ 1*CannabisUseFrequency + k*CannabisUseFrequency  + k*CannabisUseDisorder
+alcFac =~ 1*DrinksPerWeek + l*DrinksPerWeek + l*AlcoholDependency
+F1 =~ 1*cigFac  + canFac + alcFac
+DrinksPerWeek ~~ a*DrinksPerWeek
+CigarettesPerDay ~~ b*CigarettesPerDay
+CigaretteDependency ~~ c*CigaretteDependency
+AlcoholDependency ~~ d*AlcoholDependency
+CannabisUseFrequency ~~ e*CannabisUseFrequency
+CannabisUseDisorder ~~ f*CannabisUseDisorder
+cigFac ~~ g*cigFac
+canFac ~~ h*canFac
+alcFac ~~ i*alcFac
+cigFac ~~ 0*canFac
+cigFac ~~ 0*alcFac
+canFac ~~ 0*alcFac
+a > .0001
+b > .0001
+c > .0001
+d > .0001
+e > .0001
+f > .0001
+g > .0001
+h > .0001
+i > .0001'
+
+
+
+model8 <- 'F1 =~ NA*CigaretteDependency   + x*AlcoholDependency + x*CannabisUseDisorder
+F2 =~ NA*CigarettesPerDay  + y*DrinksPerWeek + y*CannabisUseFrequency 
+DrinksPerWeek ~~ a*DrinksPerWeek
+CigarettesPerDay ~~ b*CigarettesPerDay
+CigaretteDependency ~~ c*CigaretteDependency
+AlcoholDependency ~~ d*AlcoholDependency
+CannabisUseFrequency ~~ e*CannabisUseFrequency
+CannabisUseDisorder ~~ f*CannabisUseDisorder
+F1 ~~ h*F2
+F1 ~~ 1*F1
+F2 ~~ 1*F2
+a > .0001
+b > .0001
+c > .0001
+d > .0001
+e > .0001
+f > .0001
+h < 0.9999'
+
 # Build the model
+getFit=function(model, label){
 CommonFac_model=usermodel(covstruc=LDSCoutput_SUD, 
                           estimation = "DWLS", 
                           model = model,  
                           CFIcalc = TRUE, 
                           std.lv = FALSE, 
-                          imp_cov = FALSE)
+                          imp_cov = FALSE,
+                          fix_resid =T)
+CommonFac_model$modelfit$label=label
+CommonFac_model$results$label=label
+return(CommonFac_model)
+}
+
+CommonFac_model=getFit(model=model, label=c("single factor constrained (correlated residuals)"))
+CommonFac_model2=getFit(model=model2, label=c("single factor unconstrained (correlated residuals)"))
+CommonFac_model3=getFit(model=model3, label=c("single factor unconstrained"))
+CommonFac_model4=getFit(model=model4, label=c("single factor constrained"))
+CommonFac_model5=getFit(model=model5, label=c("bi-factor model"))
+CommonFac_model6=getFit(model=model6, label=c("bi-factor model (dependence)"))
+CommonFac_model7=getFit(model=model7, label=c("hierarchical model"))
+CommonFac_model8=getFit(model=model8, label=c("two-factor model"))
+
+
+CommonFac_modelComb=rbind(CommonFac_model$modelfit, CommonFac_model2$modelfit, CommonFac_model3$modelfit, CommonFac_model4$modelfit, CommonFac_model5$modelfit, CommonFac_model6$modelfit, CommonFac_model7$modelfit, CommonFac_model8$modelfit)
+# Export and upload onto Dropbox
+saveRDS(CommonFac_modelComb, paste0(HOME,"/output/rds/CommonFac_modelFIT.rds"))
+drop_upload(paste0(HOME,"/output/rds/CommonFac_modelFIT.rds"), path = paste0(LOCAL, "/output/rds"))                      
+
+# Export as excel
+#write.csv(CommonFac_modelComb, paste0(HOME,"/output/rds/CommonFac_modelComb.csv"), row.names = FALSE)
+#drop_upload(paste0(HOME,"/output/rds/CommonFac_modelComb.csv"), path = paste0(LOCAL, "/output/rds"))      
+
+CommonFac_model$results
 #  SRMR: A value less than .08 is generally considered a good fit (Hu & Bentler, 1999). 
-# Get model fit indicies
-CommonFac_model$modelfit
-resultsLDSC=data.frame(pheno=paste0(CommonFac_model$results$lhs, CommonFac_model$results$op, CommonFac_model$results$rhs),
-                       loading = round(CommonFac_model$results$STD_All, 2))
+# Get loadings
+extractLoading=function(model){
+resultsLDSC=data.frame(lhs=model$results$lhs, 
+                       op=model$results$op, 
+                       rhs=model$results$rhs,
+                       loading = round(model$results$STD_All, 2),
+                       model = model$results$label)
+ return(resultsLDSC)
+}
+
+modelsRes=list(CommonFac_model, CommonFac_model2, CommonFac_model3, CommonFac_model4, CommonFac_model5, CommonFac_model6)
+modelsResLoadings=lapply(modelsRes, function(x) extractLoading(x))
 
 # Export and upload onto Dropbox
-saveRDS(CommonFac_model, paste0(HOME,"/output/rds/CommonFac_model.rds"))
-drop_upload(paste0(HOME,"/output/rds/CommonFac_model.rds"), path = paste0(LOCAL, "/output/rds"))                      
+saveRDS(modelsResLoadings, paste0(HOME,"/output/rds/modelsResLoadings.rds"))
+drop_upload(paste0(HOME,"/output/rds/modelsResLoadings.rds"), path = paste0(LOCAL, "/output/rds"))                      
 
 ## CHECK IF LOGIT SCALE
 # If the standard error column is the standard error of the odds ratio you would set se.logit = FALSE, and if it is the standard error of a logsitic beta you would set se.logit = TRUE. Off the top of my head I'm not positive for METAL output what the scale of the standard error column is, but my guess is that it is the standard error of a logistic beta in which case as you say you would set se.logit = TRUE
